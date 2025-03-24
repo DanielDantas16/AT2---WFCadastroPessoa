@@ -35,6 +35,10 @@ namespace AT2_WFCadastroPessoa
                             "Sucesso!", MessageBoxButtons.OK,
                             MessageBoxIcon.Information
                             );
+                        FormMenu form = new FormMenu();
+                        form.ShowDialog();
+                        txtLogin.Clear();
+                        txtSenha.Clear();
                         
                         return;
                     }
@@ -51,6 +55,8 @@ namespace AT2_WFCadastroPessoa
             txtSenha.Clear();
 
             return;
+
+
         }      
     }
 }

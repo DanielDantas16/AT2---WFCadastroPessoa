@@ -10,7 +10,7 @@ namespace AT2_WFCadastroPessoa
         }
         private void FormListagem_Load(object sender, EventArgs e)
         {
-           
+            dvgListadeProdutos.DataSource = pessoa.ListaPessoa;
 
         }
 

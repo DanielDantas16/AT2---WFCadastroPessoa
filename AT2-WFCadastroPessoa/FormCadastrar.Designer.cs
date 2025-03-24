@@ -34,15 +34,15 @@
             lblNomeCompleto = new Label();
             lblDescricao = new Label();
             gpxTipoTelefone = new GroupBox();
+            rdbRecado = new RadioButton();
             rdbComercial = new RadioButton();
             rdbPessoal = new RadioButton();
             lblEmail = new Label();
-            textBox1 = new TextBox();
-            checkBox1 = new CheckBox();
-            maskedTextBox1 = new MaskedTextBox();
+            txtEmail = new TextBox();
+            cbfilhos = new CheckBox();
+            mkttelefone = new MaskedTextBox();
             lblcpf = new Label();
-            maskedTextBox2 = new MaskedTextBox();
-            rdbRecado = new RadioButton();
+            mktcpf = new MaskedTextBox();
             Salvar = new Button();
             btnVoltar = new Button();
             gpxTipoTelefone.SuspendLayout();
@@ -57,6 +57,7 @@
             // 
             // txtCodigo
             // 
+            txtCodigo.Enabled = false;
             txtCodigo.Location = new Point(74, 74);
             txtCodigo.Name = "txtCodigo";
             txtCodigo.Size = new Size(97, 23);
@@ -101,6 +102,17 @@
             gpxTipoTelefone.TabStop = false;
             gpxTipoTelefone.Text = "Tipo Telefone";
             // 
+            // rdbRecado
+            // 
+            rdbRecado.AutoSize = true;
+            rdbRecado.Location = new Point(30, 75);
+            rdbRecado.Name = "rdbRecado";
+            rdbRecado.Size = new Size(64, 19);
+            rdbRecado.TabIndex = 2;
+            rdbRecado.TabStop = true;
+            rdbRecado.Text = "Recado";
+            rdbRecado.UseVisualStyleBackColor = true;
+            // 
             // rdbComercial
             // 
             rdbComercial.AutoSize = true;
@@ -111,7 +123,6 @@
             rdbComercial.TabStop = true;
             rdbComercial.Text = "Comercial";
             rdbComercial.UseVisualStyleBackColor = true;
-            rdbComercial.CheckedChanged += rdbComercial_CheckedChanged;
             // 
             // rdbPessoal
             // 
@@ -133,30 +144,30 @@
             lblEmail.TabIndex = 13;
             lblEmail.Text = "E-mail";
             // 
-            // textBox1
+            // txtEmail
             // 
-            textBox1.Location = new Point(74, 163);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(312, 23);
-            textBox1.TabIndex = 14;
+            txtEmail.Location = new Point(74, 163);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(312, 23);
+            txtEmail.TabIndex = 14;
             // 
-            // checkBox1
+            // cbfilhos
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(77, 279);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(97, 19);
-            checkBox1.TabIndex = 15;
-            checkBox1.Text = "Possuí filhos?";
-            checkBox1.UseVisualStyleBackColor = true;
+            cbfilhos.AutoSize = true;
+            cbfilhos.Location = new Point(77, 279);
+            cbfilhos.Name = "cbfilhos";
+            cbfilhos.Size = new Size(97, 19);
+            cbfilhos.TabIndex = 15;
+            cbfilhos.Text = "Possuí filhos?";
+            cbfilhos.UseVisualStyleBackColor = true;
             // 
-            // maskedTextBox1
+            // mkttelefone
             // 
-            maskedTextBox1.Location = new Point(74, 222);
-            maskedTextBox1.Mask = "(  )00000-9999";
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(100, 23);
-            maskedTextBox1.TabIndex = 16;
+            mkttelefone.Location = new Point(74, 222);
+            mkttelefone.Mask = "(  )00000-9999";
+            mkttelefone.Name = "mkttelefone";
+            mkttelefone.Size = new Size(100, 23);
+            mkttelefone.TabIndex = 16;
             // 
             // lblcpf
             // 
@@ -167,24 +178,13 @@
             lblcpf.TabIndex = 17;
             lblcpf.Text = "CPF";
             // 
-            // maskedTextBox2
+            // mktcpf
             // 
-            maskedTextBox2.Location = new Point(206, 74);
-            maskedTextBox2.Mask = "000,000,000-00";
-            maskedTextBox2.Name = "maskedTextBox2";
-            maskedTextBox2.Size = new Size(180, 23);
-            maskedTextBox2.TabIndex = 18;
-            // 
-            // rdbRecado
-            // 
-            rdbRecado.AutoSize = true;
-            rdbRecado.Location = new Point(30, 75);
-            rdbRecado.Name = "rdbRecado";
-            rdbRecado.Size = new Size(64, 19);
-            rdbRecado.TabIndex = 2;
-            rdbRecado.TabStop = true;
-            rdbRecado.Text = "Recado";
-            rdbRecado.UseVisualStyleBackColor = true;
+            mktcpf.Location = new Point(206, 74);
+            mktcpf.Mask = "000,000,000-00";
+            mktcpf.Name = "mktcpf";
+            mktcpf.Size = new Size(180, 23);
+            mktcpf.TabIndex = 18;
             // 
             // Salvar
             // 
@@ -212,11 +212,11 @@
             ClientSize = new Size(420, 432);
             Controls.Add(btnVoltar);
             Controls.Add(Salvar);
-            Controls.Add(maskedTextBox2);
+            Controls.Add(mktcpf);
             Controls.Add(lblcpf);
-            Controls.Add(maskedTextBox1);
-            Controls.Add(checkBox1);
-            Controls.Add(textBox1);
+            Controls.Add(mkttelefone);
+            Controls.Add(cbfilhos);
+            Controls.Add(txtEmail);
             Controls.Add(lblEmail);
             Controls.Add(gpxTipoTelefone);
             Controls.Add(lblDescricao);
@@ -226,6 +226,7 @@
             Controls.Add(txtNome);
             Name = "FormCadastrar";
             Text = "Cadastrar";
+            Load += FormCadastrar_Load_1;
             gpxTipoTelefone.ResumeLayout(false);
             gpxTipoTelefone.PerformLayout();
             ResumeLayout(false);
@@ -248,11 +249,11 @@
         private RadioButton rdbComercial;
         private RadioButton rdbPessoal;
         private Label lblEmail;
-        private TextBox textBox1;
-        private CheckBox checkBox1;
-        private MaskedTextBox maskedTextBox1;
+        private TextBox txtEmail;
+        private CheckBox cbfilhos;
+        private MaskedTextBox mkttelefone;
         private Label lblcpf;
-        private MaskedTextBox maskedTextBox2;
+        private MaskedTextBox mktcpf;
         private RadioButton rdbRecado;
         private Button Salvar;
         private Button btnVoltar;
